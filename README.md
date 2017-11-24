@@ -1,4 +1,6 @@
-# A set of useful Laravel collection macros
+# Query Builder Dump
+
+![Screenshot of code](https://pbs.twimg.com/media/DPZ96-zXUAEbs3L.jpg:large)
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/morrislaptop/laravel-query-builder-dump.svg?style=flat-square)](https://packagist.org/packages/morrislaptop/laravel-query-builder-dump)
 [![Build Status](https://img.shields.io/travis/morrislaptop/laravel-query-builder-dump/master.svg?style=flat-square)](https://travis-ci.org/morrislaptop/laravel-query-builder-dump)

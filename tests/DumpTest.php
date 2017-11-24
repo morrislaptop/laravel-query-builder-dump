@@ -55,6 +55,27 @@ class DumpTest extends Orchestra\Testbench\TestCase
         $this->assertArraySubset($expected, $dumped);
     }
 
+    /** @test */
+    public function it_dumps_a_raw_query()
+    {
+        $dumped = null;
+
+        $dumper = function ($var) use (&$dumped) {
+            $dumped = $var;
+        };
+
+        $users = DB::table('users')
+                   ->where('something', 50)
+                   ->orWhere('name', 'John')
+                   ->orderBy('name', 'desc')
+                   ->having('account_id', '>', 100)
+                   ->dump($dumper);
+
+        $expected = "select * from `users` where `something` = 50 or `name` = 'John' having `account_id` > 100 order by `name` desc";
+
+        $this->assertEquals($expected, $dumped['raw']);
+    }
+
     protected function getPackageProviders($app)
     {
         return [QueryBuilderDumpServiceProvider::class];

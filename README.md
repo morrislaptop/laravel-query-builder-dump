@@ -2,6 +2,27 @@
 
 ![Screenshot of code](https://pbs.twimg.com/media/DPZ96-zXUAEbs3L.jpg:large)
 
+``` php
+array:3 [
+  "bindings" => array:6 [
+    "select" => []
+    "join" => []
+    "where" => array:1 [
+      0 => Illuminate\Support\Carbon {#736
+        +"date": "2017-11-24 15:10:26.000000"
+        +"timezone_type": 3
+        +"timezone": "UTC"
+      }
+    ]
+    "having" => []
+    "order" => []
+    "union" => []
+  ]
+  "sql" => "select * from `prizes` where `comment_id` is null and `release_at` < ? order by `release_at` asc"
+  "raw" => "select * from `prizes` where `comment_id` is null and `release_at` < '2017-11-24 15:10:26' order by `release_at` asc"
+]
+```
+
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/morrislaptop/laravel-query-builder-dump.svg?style=flat-square)](https://packagist.org/packages/morrislaptop/laravel-query-builder-dump)
 [![Build Status](https://img.shields.io/travis/morrislaptop/laravel-query-builder-dump/master.svg?style=flat-square)](https://travis-ci.org/morrislaptop/laravel-query-builder-dump)
 [![Quality Score](https://img.shields.io/scrutinizer/g/morrislaptop/laravel-query-builder-dump.svg?style=flat-square)](https://scrutinizer-ci.com/g/morrislaptop/laravel-query-builder-dump)

@@ -1,0 +1,31 @@
+{
+    "name": "morrislaptop/laravel-query-builder-dump",
+    "description": "Adds the ability to dump the query builder inline",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Craig Morris",
+            "email": "cr@igmorr.is",
+            "homepage": "https://github.com/morrislpatop"
+        }
+    ],
+    "require-dev": {
+        "orchestra/testbench": "^3.5",
+        "phpunit/phpunit": "^6.4"
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit"
+    },
+    "autoload": {
+        "psr-4": {
+            "Morrislaptop\\QueryBuilderDump\\": "src"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Morrislaptop\\QueryBuilderDump\\QueryBuilderDumpServiceProvider"
+            ]
+        }
+    }
+}

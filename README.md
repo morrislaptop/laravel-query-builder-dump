@@ -1,2 +1,63 @@
-# laravel-query-builder-dump
-Add a dump method to the query builder
+# A set of useful Laravel collection macros
+
+[![Latest Version on Packagist](https://img.shields.io/packagist/v/morrislaptop/laravel-query-builder-dump.svg?style=flat-square)](https://packagist.org/packages/morrislaptop/laravel-query-builder-dump)
+[![Build Status](https://img.shields.io/travis/morrislaptop/laravel-query-builder-dump/master.svg?style=flat-square)](https://travis-ci.org/morrislaptop/laravel-query-builder-dump)
+[![Quality Score](https://img.shields.io/scrutinizer/g/morrislaptop/laravel-query-builder-dump.svg?style=flat-square)](https://scrutinizer-ci.com/g/morrislaptop/laravel-query-builder-dump)
+[![Total Downloads](https://img.shields.io/packagist/dt/morrislaptop/laravel-query-builder-dump.svg?style=flat-square)](https://packagist.org/packages/morrislaptop/laravel-query-builder-dump)
+
+This repository contains a dump method for the query builder, allowing you to dump your query inline. Similar to `$collection->dump();`
+
+## Installation
+
+You can pull in the package via composer:
+
+``` bash
+composer require morrislaptop/laravel-query-builder-dump --dev
+```
+
+The package will automatically register itself.
+
+## Usage
+
+Simply call dump anywhere when constructing your query.
+
+```php
+$users = DB::table('users')
+           ->select('name', 'email as user_email')
+           ->join('contacts', 'users.id', '=', 'contacts.user_id')
+           ->union($first)
+           ->dump()
+           ->where('something', 'true')
+           ->orWhere('name', 'John')
+           ->orderBy('name', 'desc')
+           ->groupBy('account_id')
+           ->dump()
+           ->offset(10)
+           ->limit(5)
+           ->having('account_id', '>', 100)
+           ->get();
+```
+
+## Testing
+
+``` bash
+$ composer test
+```
+
+## Contributing
+
+Please see [CONTRIBUTING](CONTRIBUTING.md) for details.
+
+## Security
+
+If you discover any security related issues, please email cr@igmorr.is instead of using the issue tracker.
+
+## Credits
+
+- [Freek Van der Herten](https://github.com/freekmurze)
+- [Sebastian De Deyne](https://github.com/sebastiandedeyne)
+- [All Contributors](../../contributors)
+
+## License
+
+The MIT License (MIT). Please see [License File](LICENSE.md) for more information.

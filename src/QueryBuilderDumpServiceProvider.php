@@ -12,7 +12,8 @@ class QueryBuilderDumpServiceProvider extends ServiceProvider
         $raw = function ($sql, $bindings) {
             $flat = array_flatten($bindings);
             foreach ($flat as $binding) {
-                $binded = is_numeric($binding) ? $binding : "'{$binding}'";
+                $binded = $binding instanceof \DateTime ? $binding->format('Y-m-d H:i:s') : $binding;
+                $binded = is_numeric($binded) ? $binded : "'{$binded}'";
                 $sql = preg_replace('/\?/', $binded, $sql, 1);
             }
 

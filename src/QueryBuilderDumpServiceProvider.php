@@ -24,7 +24,7 @@ class QueryBuilderDumpServiceProvider extends ServiceProvider
             $dumper([
                 'bindings' => $this->bindings,
                 'sql' => $this->toSql(),
-                'raw' => $raw($this->toSql(), $this->bindings)
+                'raw' => $raw($this->toSql(), $this->bindings),
             ]);
 
             return $this;

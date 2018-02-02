@@ -43,13 +43,13 @@ class DumpTest extends Orchestra\Testbench\TestCase
             'bindings' => [
                 'where' => [
                     'true',
-                    'John'
+                    'John',
                 ],
                 'having' => [
-                    100
-                ]
+                    100,
+                ],
             ],
-            'sql' => '(select distinct `name`, `email` as `user_email`, count(*) as user_count from `users` inner join `contacts` on `users`.`id` = `contacts`.`user_id` where `something` = ? or `name` = ? group by `account_id` having `account_id` > ?) union (select * from `users` where `first_name` is null) order by `name` desc limit 5 offset 10'
+            'sql' => '(select distinct `name`, `email` as `user_email`, count(*) as user_count from `users` inner join `contacts` on `users`.`id` = `contacts`.`user_id` where `something` = ? or `name` = ? group by `account_id` having `account_id` > ?) union (select * from `users` where `first_name` is null) order by `name` desc limit 5 offset 10',
         ];
 
         $this->assertArraySubset($expected, $dumped);

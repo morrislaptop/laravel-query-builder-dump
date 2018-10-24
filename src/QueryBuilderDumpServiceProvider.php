@@ -3,6 +3,7 @@
 namespace Morrislaptop\QueryBuilderDump;
 
 use Illuminate\Database\Query\Builder;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\ServiceProvider;
 
 class QueryBuilderDumpServiceProvider extends ServiceProvider
@@ -20,12 +21,14 @@ class QueryBuilderDumpServiceProvider extends ServiceProvider
             return $sql;
         };
 
-        Builder::macro('dump', function ($dumper = 'dump') use ($raw) {
-            $dumper([
+        Builder::macro('dump', function ($inLine = true, $dumper = 'dump') use ($raw) {
+            $sqlDump = [
                 'bindings' => $this->bindings,
                 'sql' => $this->toSql(),
                 'raw' => $raw($this->toSql(), $this->bindings),
-            ]);
+            ];
+
+            $inLine ? $dumper($sqlDump) : Log::debug($sqlDump);
 
             return $this;
         });
